@@ -1,0 +1,542 @@
+$headerBackgroundColor: #022929;
+$navigationBackgroundColor: #066666;
+$mainContainerBackgroundColor: #1e3a3a;
+$sidePanelBorderColor: #055252;
+$white: #ffffff;
+
+@mixin breakpoint($point) {
+  @if $point == s{
+    @media (max-width: 449px) { @content; }
+  }
+  @else if $point == m {
+    @media (min-width: 450px) and (max-width: 768px ) { @content; }
+  }
+  @else if $point == l {
+    @media (min-width: 769px) { @content; }
+  }
+}
+
+.open{
+  display: block !important;
+}
+
+.fixed-logo{
+  @include breakpoint(l) {
+    position: fixed;
+    margin-top: 80px;
+    z-index: 15;
+  }
+
+  @include breakpoint(m){
+    display: none;
+  }
+
+  @include breakpoint(s){
+    display: none;
+  }
+}
+
+.container{
+  max-width: 1280px;
+}
+
+ul li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  background: $headerBackgroundColor;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+
+  @include breakpoint(l){
+    .hamburger-icon{
+      display: none;
+    }
+  }
+
+  @include breakpoint(m) {
+    .hamburger-icon{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      cursor: pointer;
+      color: $white;
+    }
+  }
+
+  @include breakpoint(s) {
+    .hamburger-icon{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      color: $white;
+    }
+  }
+
+  .header-logo{
+    @include breakpoint(l) {
+      align-self: left;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+
+    @include breakpoint(s) {
+
+    }
+  }
+  #nav{
+    z-index: 5;
+
+    @include breakpoint(l) {
+      font-size: 16px;
+      padding-left: 10px;
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .nav-item{
+        color: $white;
+        font-weight: bold;
+        background: $navigationBackgroundColor;
+        padding: 5px 30px;
+        margin-right: 3px;
+        display: flex;
+        align-items: left;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      .dropdown-content-item{
+        font-size: 14px;
+        color: $white;
+        background: $navigationBackgroundColor;
+        padding: 5px 30px;
+        margin-right: 3px;
+        display: flex;
+        align-items: left;
+        justify-content: left;
+        text-align: left;
+        text-decoration: none;
+        width: 200px;
+
+        &:hover{
+          background: $headerBackgroundColor;
+        }
+      }
+
+      ul{
+        list-style-type: none;
+        display: flex;
+      }
+
+      li{
+        text-align: center;
+        position: relative;
+
+        #dropdown-content{
+          li{
+            display: none;
+            top: 0;
+          }
+        }
+
+        .dropdown-content-list{
+          display: none;
+          top: 0;
+        }
+      }
+
+      #dropdown-content{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+
+        li{
+          display: none;
+          position: relative;
+          top: 0;
+          z-index: 10;
+        }
+      }
+
+      .arrow{
+        margin: auto 0 auto 10px ;
+        color: $white;
+        font-size: 7px;
+      }
+    }
+
+    @include breakpoint(m) {
+      display: none;
+      font-size: 2vw;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      margin-right: -15px;
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .nav-item{
+        color: $white;
+        font-weight: bold;
+        background: $navigationBackgroundColor;
+        padding: 2px;
+        display: block;
+        text-decoration: none;
+        width: 100%;
+      }
+
+      .dropdown-content-item{
+        font-size: 1.8vw;
+        color: $white;
+        background: $navigationBackgroundColor;
+        padding: 5px 30px;
+        display: block;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        min-width: 100%;
+
+        &:hover{
+          background: $headerBackgroundColor;
+        }
+      }
+
+      ul{
+        list-style-type: none;
+        display: block;
+        width: 100%;
+        position: static;
+        .li{
+          width: 100%;
+          float: none;
+        }
+      }
+
+      li{
+        text-align: center;
+        width: 100%;
+      }
+
+      #dropdown-content{
+        position: static;
+        width: 100%;
+
+        li{
+          display: none;
+          position: static;
+          top: 0;
+          z-index: 10;
+        }
+      }
+
+      .arrow{
+        color: $white;
+        font-size: 1vw;
+      }
+    }
+
+    @include breakpoint(s) {
+      display: none;
+      font-size: 4.5vw;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      margin-right: -15px;
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .nav-item{
+        color: $white;
+        font-weight: bold;
+        background: $navigationBackgroundColor;
+        padding: 2px;
+        display: block;
+        text-decoration: none;
+        width: 100%;
+      }
+
+      .dropdown-content-item{
+        font-size: 4vw;
+        color: $white;
+        background: $navigationBackgroundColor;
+        padding: 5px 30px;
+        display: block;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        min-width: 100%;
+
+        &:hover{
+          background: $headerBackgroundColor;
+        }
+      }
+
+      ul{
+        list-style-type: none;
+        display: block;
+        width: 100%;
+        position: static;
+        .li{
+          width: 100%;
+          float: none;
+        }
+      }
+
+      li{
+        text-align: center;
+        width: 100%;
+      }
+
+      #dropdown-content{
+        position: static;
+        width: 100%;
+
+        li{
+          display: none;
+          position: static;
+          top: 0;
+          z-index: 10;
+        }
+      }
+
+      .arrow{
+        color: $white;
+        font-size: 2vw;
+      }
+    }
+  }
+}
+
+.wrapper{
+  margin-top: 10px;
+
+  .left-col{
+    background: $mainContainerBackgroundColor;
+    border: 10px solid $navigationBackgroundColor;
+    color: $white;
+    padding: 20px;
+
+    @include breakpoint(l) {
+      font-size: 14px;
+    }
+
+    @include breakpoint(m) {
+      font-size: 1.8vw;
+      min-width: 100%;
+    }
+
+    @include breakpoint(s) {
+      font-size: 4vw;
+      min-width: 100%;
+    }
+  }
+
+  .right-col{
+    background: $headerBackgroundColor;
+    border: 10px solid $sidePanelBorderColor;
+    color: $white;
+    a {
+      color: $white;
+      text-decoration: underline;
+      &:hover {
+        color: $white;
+        text-decoration: none;
+      }
+    }
+    padding: 0 10px 10px 10px;
+
+    .social-media-icons{
+      margin: 0 10px 20px 0;
+    }
+
+    .section-title{
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    @include breakpoint(l) {
+      font-size: 16px;
+    }
+
+    @include breakpoint(m) {
+      font-size: 2vw;
+      min-width: 100%;
+    }
+
+    @include breakpoint(s) {
+      font-size: 4.5vw;
+      min-width: 100%;
+    }
+  }
+
+  .image-container{
+    width: 80%;
+    height: 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .image{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .slider{
+    position: relative;
+    .previous-image{
+      background-color: transparent;
+      border: none;
+      color: $white;
+      font-size: 20px;
+      position: absolute;
+      top: 40%;
+      left: 0;
+      cursor: pointer;
+      transition: .5s;
+    }
+
+    .next-image{
+      background-color: transparent;
+      border: none;
+      color: $white;
+      font-size: 20px;
+      display: block;
+      position: absolute;
+      top: 40%;
+      right: 0;
+      cursor: pointer;
+    }
+
+  }
+  .dots-container{
+    justify-content: center;
+    text-align: center;
+
+    .dots{
+      font-size: 20px;
+      color: $sidePanelBorderColor;
+      display: inline-block;
+      text-align: center;
+    }
+    .active{
+      color: $white;
+    }
+  }
+}
+
+.footer{
+  background: $navigationBackgroundColor;
+  color: $white;
+  a{
+    color: $white;
+    text-decoration: underline;
+    &:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  margin: 10px 0 10px 0;
+  padding: 10px 15px;
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  .footer-left{
+    flex-grow: 1;
+  }
+
+  .footer-right{
+    display: block;
+
+    .footer-right-item{
+      padding-left: 10px;
+    }
+  }
+
+  @include breakpoint(l) {
+    font-size: 14px;
+  }
+
+  @include  breakpoint(m) {
+    font-size: 1.8vw;
+    .footer-left{
+      min-width: 100%;
+      padding-left: 10px;
+      text-align: center;
+    }
+
+    .footer-right{
+      min-width: 100%;
+      text-align: center;
+    }
+  }
+
+  @include breakpoint(s) {
+    font-size: 4vw;
+    .footer-left{
+      min-width: 100%;
+      padding-left: 10px;
+      text-align: left;
+    }
+
+    .footer-right{
+      min-width: 100%;
+      text-align: left;
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+  @include breakpoint(l){
+    .header{
+      position: relative;
+      min-height: 100px;
+      .nav{
+        position: absolute;
+        top: 66px;
+      }
+    }
+    .arrow{
+      margin: 8px 0 auto 5px;
+      padding-top: 10px !important;
+    }
+  }
+
+  @include breakpoint(m){
+    .header{
+      display:flex;
+      flex-direction:row;
+    }
+  }
+}
